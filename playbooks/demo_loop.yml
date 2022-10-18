@@ -1,0 +1,14 @@
+---
+- hosts: "{{ hosts }}"
+  tasks:
+  - name: creamos varios usuarios
+    win_user:
+      name: "{{ item }}"
+      description: "usuario creado automaticamente por ansible"
+      state: present
+    with_items:
+    - pepe
+    - maria
+    - marta
+    - raul
+  
