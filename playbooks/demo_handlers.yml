@@ -1,0 +1,16 @@
+---
+- hosts: "{{ hosts }}"
+  handlers:
+  - name: reinicio el servidor
+    win_reboot:
+    listen: "reinicioo"
+  tasks:
+  - name: cambio hostname
+    win_hostname:
+      name: "{{ hosts }}"
+    notify: reinicioo
+  - name: instalar la feature de telnet
+    win_feature:
+      name: Telnet-Client
+      state: present
+    notify: reinicioo
